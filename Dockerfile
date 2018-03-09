@@ -53,6 +53,7 @@ RUN apt-get update && apt-get install -y \
         /usr/share/doc-base
 
 COPY init.sh ${AIRFLOW_HOME}/init.sh
+COPY dags ${AIRFLOW_HOME}/dags
 
 
 EXPOSE 8080
