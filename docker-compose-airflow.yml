@@ -8,8 +8,7 @@ services:
             - ./init/webserver.sh:/usr/local/bin/webserver.sh
         ports:
             - "8080:8080"
-        command:
-            - webserver.sh
+        entrypoint: ./init/webserver.sh
 
 
     scheduler:
@@ -19,6 +18,4 @@ services:
             - webserver
         volumes:
             - ./dags:/home/airflow/dags
-            - ./init/scheduler.sh:/usr/local/bin/scheduler.sh
-        command:
-            - scheduler.sh
+        entrypoint: ./init/scheduler.sh
