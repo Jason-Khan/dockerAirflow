@@ -1,0 +1,24 @@
+version: '2'
+services:
+    webserver:
+        image: jasonkhan/dockerairflow:latest
+        container_name: airflow-web
+        volumes:
+            - ./dags:/home/airflow/dags
+            - ./webserver.sh:/usr/local/bin/webserver.sh
+        ports:
+            - "8080:8080"
+        command:
+            - webserver.sh
+
+
+    scheduler:
+        image: jasonkhan/dockerairflow:latest
+        container_name: airflow-scheduler
+        depends_on:
+            - webserver
+        volumes:
+            - ./dags:/home/airflow/dags
+            - ./scheduler.sh:/usr/local/bin/scheduler.sh
+        command:
+            - scheduler.sh
