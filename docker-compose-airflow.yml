@@ -5,7 +5,7 @@ services:
         container_name: airflow-web
         volumes:
             - ./dags:/home/airflow/dags
-            - ./webserver.sh:/usr/local/bin/webserver.sh
+            - ./init/webserver.sh:/usr/local/bin/webserver.sh
         ports:
             - "8080:8080"
         command:
@@ -19,6 +19,6 @@ services:
             - webserver
         volumes:
             - ./dags:/home/airflow/dags
-            - ./scheduler.sh:/usr/local/bin/scheduler.sh
+            - ./init/scheduler.sh:/usr/local/bin/scheduler.sh
         command:
             - scheduler.sh
