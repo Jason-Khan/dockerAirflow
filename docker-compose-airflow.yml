@@ -7,7 +7,7 @@ services:
             - ./dags:/home/airflow/dags
         ports:
             - "8080:8080"
-        entrypoint: /home/airflow/init/webserver.sh sh
+        entrypoint: /bin/sh -c "/home/airflow/init/webserver.sh"
 
 
     scheduler:
@@ -17,4 +17,4 @@ services:
             - webserver
         volumes:
             - ./dags:/home/airflow/dags
-        entrypoint: /home/airflow/init/scheduler.sh sh
+        entrypoint: /bin/sh -c "/home/airflow/init/scheduler.sh"
