@@ -8,3 +8,13 @@ services:
         ports:
             - "8080:8080"
         entrypoint: /bin/sh -c "/home/airflow/init/webserver.sh"
+
+
+    scheduler:
+        image: jasonkhan/dockerairflow:latest
+        container_name: airflow-scheduler
+        depends_on:
+            - webserver
+        volumes:
+            - ./dags:/home/airflow/dags
+        entrypoint: /bin/sh -c "/home/airflow/init/scheduler.sh"
